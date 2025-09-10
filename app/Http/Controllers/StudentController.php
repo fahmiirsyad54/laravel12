@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -9,30 +10,40 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     return view('student',[
+    //         'title' => 'Students',
+    //         'students' => [
+    //             [
+    //             'name' => 'Nabil Assidqi',
+    //             'grade' => '11 PPLG 1',
+    //             'email' => 'nabil@mail.com',
+    //             'address' => 'Jl. jalan aja'
+    //             ],
+    //             [
+    //                 'name' => 'Rendi',
+    //                 'grade' => '11 PPLG 1',
+    //                 'email' => 'nabil@mail.com',
+    //                 'address' => 'Jl. jalan aja'
+    //             ],
+    //             [
+    //                 'name' => 'Ananta',
+    //                 'grade' => '11 PPLG 1',
+    //                 'email' => 'nabil@mail.com',
+    //                 'address' => 'Jl. jalan aja'
+    //             ]
+    //         ]
+    //     ]);
+    // }
+
     public function index()
     {
+        $students = Student::all();
+
         return view('student',[
             'title' => 'Students',
-            'students' => [
-                [
-                'name' => 'Nabil Assidqi',
-                'grade' => '11 PPLG 1',
-                'email' => 'nabil@mail.com',
-                'address' => 'Jl. jalan aja'
-                ],
-                [
-                    'name' => 'Rendi',
-                    'grade' => '11 PPLG 1',
-                    'email' => 'nabil@mail.com',
-                    'address' => 'Jl. jalan aja'
-                ],
-                [
-                    'name' => 'Ananta',
-                    'grade' => '11 PPLG 1',
-                    'email' => 'nabil@mail.com',
-                    'address' => 'Jl. jalan aja'
-                ]
-            ]
+            'students' => $students
         ]);
     }
 

@@ -16,5 +16,5 @@ Route::get('/profile', function () {
     ]);
 });
 
-Route::get('/student', [StudentController::class, 'index']);
+Route::resource('student', StudentController::class);
 
