@@ -1,16 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home',[
-        'title' => 'Home'
-    ]);
-});
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/profile', function () {
     return view('profile',[
@@ -18,29 +16,5 @@ Route::get('/profile', function () {
     ]);
 });
 
-Route::get('/student', function () {
-    return view('student',[
-        'title' => 'Students',
-        'students' => [
-            [
-            'name' => 'Nabil Assidqi',
-            'grade' => '11 PPLG 1',
-            'email' => 'nabil@mail.com',
-            'address' => 'Jl. jalan aja'
-        ],
-        [
-            'name' => 'Rendi',
-            'grade' => '11 PPLG 1',
-            'email' => 'nabil@mail.com',
-            'address' => 'Jl. jalan aja'
-        ],
-        [
-            'name' => 'Ananta',
-            'grade' => '11 PPLG 1',
-            'email' => 'nabil@mail.com',
-            'address' => 'Jl. jalan aja'
-        ]
-        ]
-    ]);
-});
+Route::get('/student', [StudentController::class, 'index']);
 
