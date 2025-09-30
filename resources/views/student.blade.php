@@ -21,11 +21,11 @@
       <tbody>
         @foreach ($students as $student)
         <tr class="odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition">
-          <td class="px-6 py-4 font-medium text-gray-700">1</td>
+          <td class="px-6 py-4">{{$loop->iteration}}</td>
           <td class="px-6 py-4">{{ $student['name'] }}</td>
-          <td class="px-6 py-4 text-gray-600">{{ $student['grade'] }}</td>
-          <td class="px-6 py-4 text-gray-600">{{ $student['email'] }}</td>
-          <td class="px-6 py-4 text-gray-600">{{ $student['address'] }}</td>
+          <td class="px-6 py-4">{{ $student['grade'] }}</td>
+          <td class="px-6 py-4">{{ $student['email'] }}</td>
+          <td class="px-6 py-4">{{ $student['address'] }}</td>
         </tr>
         @endforeach
       </tbody>
