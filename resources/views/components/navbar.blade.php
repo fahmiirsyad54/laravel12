@@ -11,6 +11,7 @@
                <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
                <x-nav-link href="/profile" :active="request()->is('profile')">Profile</x-nav-link>
                <x-nav-link href="/student" :active="request()->is('student')">Students</x-nav-link>
+               <x-nav-link href="/classroom" :active="request()->is('classroom')">Classroom</x-nav-link>
             </div>
           </div>
         </div>
@@ -62,6 +63,7 @@
         <x-nav-link-mobile href="/home" :active="request()->is('home')">Home</x-nav-link-mobile>
         <x-nav-link-mobile href="/profile" :active="request()->is('profile')">Profile</x-nav-link-mobile>
         <x-nav-link-mobile href="/student" :active="request()->is('student')">Student</x-nav-link-mobile>
+        <x-nav-link-mobile href="/classroom" :active="request()->is('classroom')">Classroom</x-nav-link-mobile>
       </div>
       <div class="border-t border-white/10 pt-4 pb-3">
         <div class="flex items-center px-5">

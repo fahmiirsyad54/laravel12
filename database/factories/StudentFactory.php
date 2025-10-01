@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Classroom;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            // 'grade' => fake()->randomElement(['11 PPLG 1', '11 PPLG 2']),
+            'classroom_id' => Classroom::factory(),
+            'email' => fake()->unique()->safeEmail(),
+            'address' => fake()->address()
         ];
     }
 }

@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ClassroomController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
@@ -17,4 +20,4 @@ Route::get('/profile', function () {
 });
 
 Route::resource('student', StudentController::class);
-
+Route::get('/classroom', [ClassroomController::class, 'index']);
