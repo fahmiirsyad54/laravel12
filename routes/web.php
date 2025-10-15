@@ -21,3 +21,9 @@ Route::get('/profile', function () {
 
 Route::resource('student', StudentController::class);
 Route::get('/classroom', [ClassroomController::class, 'index']);
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard',[
+        'title' => 'Dashboard'
+    ]);
+});

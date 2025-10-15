@@ -10,16 +10,22 @@
   <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
     <table class="min-w-full text-sm">
       <thead>
-        <tr class="bg-gray-900 text-gray-100 text-left">
-          <th class="px-6 py-3">#</th>
-          <th class="px-6 py-3">Room Name</th>
+        <tr class = "bg-gray-900 text-gray-100 text-left">
+        <th class = "px-6 py-3">#</th>
+        <th class = "px-6 py-3">Room Name</th>
+        <th class = "px-6 py-3">Students List</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($classrooms as $classroom)
-        <tr class="odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition">
-          <td class="px-6 py-4">{{$loop->iteration}}</td>
-          <td class="px-6 py-4">{{ $classroom['name'] }}</td>
+        <tr class = "odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition">
+            <td class = "px-6 py-4">{{$loop->iteration}}</td>
+            <td class = "px-6 py-4">{{ $classroom->name }}</td>
+            <td class = "px-6 py-4">
+                @foreach ($classroom->students as $student)
+                    {{ $student->name }} <br>
+                @endforeach
+            </td>
         </tr>
         @endforeach
       </tbody>
