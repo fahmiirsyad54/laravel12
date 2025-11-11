@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\AdminStudentController;
+use App\Http\Controllers\admin\AdminClassroomController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -20,10 +23,12 @@ Route::get('/profile', function () {
 });
 
 Route::resource('student', StudentController::class);
+
 Route::get('/classroom', [ClassroomController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard',[
-        'title' => 'Dashboard'
-    ]);
-});
+Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/admin/student', [AdminStudentController::class, 'index']);
+Route::post('admin/student', [AdminStudentController::class, 'store'])->name('students.store');
+
+Route::get('/admin/classroom', [AdminClassroomController::class, 'index']);

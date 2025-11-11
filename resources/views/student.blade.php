@@ -22,7 +22,7 @@
         @foreach ($students as $student)
         <tr class="odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition">
           <td class="px-6 py-4">{{$loop->iteration}}</td>
-          <td class="px-6 py-4">{{ $student['name'] }}</td>
+          <td class="px-6 py-4">{{ $student->name }}</td>
           {{-- <td class="px-6 py-4">{{ $student['grade'] }}</td> --}}
           <td class="px-6 py-4">{{ $student->classroom->name }}</td>
           <td class="px-6 py-4">{{ $student['email'] }}</td>

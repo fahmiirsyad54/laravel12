@@ -12,6 +12,14 @@ class Student extends Model
 
     protected $with = ['classroom'];
 
+    // Tambahkan semua kolom yang boleh diisi massal
+    protected $fillable = [
+        'name',
+        'classroom_id',
+        'email',
+        'address',
+    ];
+
     public function classroom()
     {
         return $this->belongsTo(Classroom::class, 'classroom_id');

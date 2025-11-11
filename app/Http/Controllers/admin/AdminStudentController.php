@@ -1,49 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Student;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class StudentController extends Controller
+class AdminStudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    //     return view('student',[
-    //         'title' => 'Students',
-    //         'students' => [
-    //             [
-    //             'name' => 'Nabil Assidqi',
-    //             'grade' => '11 PPLG 1',
-    //             'email' => 'nabil@mail.com',
-    //             'address' => 'Jl. jalan aja'
-    //             ],
-    //             [
-    //                 'name' => 'Rendi',
-    //                 'grade' => '11 PPLG 1',
-    //                 'email' => 'nabil@mail.com',
-    //                 'address' => 'Jl. jalan aja'
-    //             ],
-    //             [
-    //                 'name' => 'Ananta',
-    //                 'grade' => '11 PPLG 1',
-    //                 'email' => 'nabil@mail.com',
-    //                 'address' => 'Jl. jalan aja'
-    //             ]
-    //         ]
-    //     ]);
-    // }
-
     public function index()
     {
-        $students = Student::all();
+        $students = Student::paginate(10);
         $classrooms = Classroom::all();
 
-        return view('student',[
+        return view('admin.student.index',[
             'title' => 'Students',
             'students' => $students,
             'classrooms' => $classrooms,
@@ -63,7 +37,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 🛡️ Validasi input
+        $validated = $request->validate([
+            'name'         => 'required|string|max:255',
+            'classroom_id' => 'required|exists:classrooms,id',
+            'email'        => 'required|email|unique:students,email',
+            'address'      => 'nullable|string|max:255',
+        ]);
+
+        // 💾 Simpan ke database
+        Student::create($validated);
+
+        // 🔁 Redirect kembali dengan pesan sukses
+        return redirect()->back()->with('success', 'Student successfully added!');
     }
 
     /**
