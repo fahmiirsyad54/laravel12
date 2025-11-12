@@ -34,7 +34,13 @@ class AdminClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'         => 'required|string|max:255',
+        ]);
+
+        Classroom::create($validated);
+
+        return redirect()->back()->with('success', 'Data berhasil disimpan !');
     }
 
     /**

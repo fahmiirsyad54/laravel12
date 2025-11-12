@@ -28,7 +28,10 @@ Route::get('/classroom', [ClassroomController::class, 'index']);
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/admin/student', [AdminStudentController::class, 'index']);
+Route::get('/admin/student', [AdminStudentController::class, 'index'])->name('students.index');
 Route::post('admin/student', [AdminStudentController::class, 'store'])->name('students.store');
+Route::delete('admin/students/{student}', [AdminStudentController::class, 'destroy'])->name('students.destroy');
+
 
 Route::get('/admin/classroom', [AdminClassroomController::class, 'index']);
+Route::post('admin/classroom', [AdminClassroomController::class, 'store'])->name('classrooms.store');

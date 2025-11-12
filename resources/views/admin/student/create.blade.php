@@ -36,10 +36,6 @@
     </div>
 
     <div class="flex justify-end space-x-2">
-        <button type="button" data-modal-hide="defaultModal"
-                class="px-4 py-2 border rounded-md dark:border-gray-600 dark:text-gray-300">
-            Cancel
-        </button>
         <button type="submit"
                 class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800">
             Save

@@ -37,7 +37,6 @@ class AdminStudentController extends Controller
      */
     public function store(Request $request)
     {
-        // 🛡️ Validasi input
         $validated = $request->validate([
             'name'         => 'required|string|max:255',
             'classroom_id' => 'required|exists:classrooms,id',
@@ -45,11 +44,9 @@ class AdminStudentController extends Controller
             'address'      => 'nullable|string|max:255',
         ]);
 
-        // 💾 Simpan ke database
         Student::create($validated);
 
-        // 🔁 Redirect kembali dengan pesan sukses
-        return redirect()->back()->with('success', 'Student successfully added!');
+        return redirect()->back()->with('success', 'Data berhasil disimpan !');
     }
 
     /**
@@ -81,6 +78,9 @@ class AdminStudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        return redirect()->route('students.index')->with('success', 'Data berhasil dihapus !');
     }
 }
