@@ -15,7 +15,7 @@
             </div>
           </div>
         </div>
-        <div class="hidden md:block">
+        {{-- <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
             <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
               <span class="absolute -inset-1.5"></span>
@@ -40,7 +40,50 @@
               </el-menu>
             </el-dropdown>
           </div>
+        </div> --}}
+
+        <div class="hidden md:block">
+            <div class="ml-4 flex items-center md:ml-6">
+
+                @guest
+                    <a href="{{ route('login') }}"
+                    class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+                        Login
+                    </a>
+                @endguest
+
+                @auth
+                    <el-dropdown class="relative ml-3">
+                        <button class="flex items-center">
+                            <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}"
+                                class="size-8 rounded-full">
+                        </button>
+
+                        <el-menu anchor="bottom end" popover class="w-48 bg-gray-800 rounded-md">
+                            <a href="/profile" class="block px-4 py-2 text-sm text-gray-300">Profile</a>
+
+                            @if(auth()->user()->role === 'admin')
+                                <a href="{{ route('admin.dashboard') }}"
+                                class="block px-4 py-2 text-sm text-gray-300">
+                                    Admin Dashboard
+                                </a>
+                            @endif
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                    class="w-full text-left px-4 py-2 text-sm text-gray-300">
+                                    Logout
+                                </button>
+                            </form>
+                        </el-menu>
+                    </el-dropdown>
+                @endauth
+
+            </div>
         </div>
+
+
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
           <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">

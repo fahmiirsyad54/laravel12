@@ -22,5 +22,9 @@
       </div>
     </main>
   </div>
+    @guest
+        <x-login-modal />
+    @endguest
+
 </body>
 </html>
