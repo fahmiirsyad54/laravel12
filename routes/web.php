@@ -31,28 +31,28 @@ Route::resource('student', StudentController::class);
 
 Route::get('/classroom', [ClassroomController::class, 'index']);
 
-// Route::prefix('admin')
-//     ->middleware(['auth', 'admin'])
-//     ->group(function () {
+Route::prefix('admin')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
 
         // DASHBOARD
-        Route::get('/admin/dashboard', [DashboardController::class, 'index'])
+        Route::get('/dashboard', [DashboardController::class, 'index'])
             ->name('admin.dashboard');
 
         // STUDENT
-        Route::get('/admin/student', [AdminStudentController::class, 'index'])
+        Route::get('/student', [AdminStudentController::class, 'index'])
             ->name('admin.students.index');
 
-        Route::post('/admin/student', [AdminStudentController::class, 'store'])
+        Route::post('/student', [AdminStudentController::class, 'store'])
             ->name('admin.students.store');
 
-        Route::delete('/admin/students/{student}', [AdminStudentController::class, 'destroy'])
+        Route::delete('/students/{student}', [AdminStudentController::class, 'destroy'])
             ->name('admin.students.destroy');
 
         // CLASSROOM
-        Route::get('/admin/classroom', [AdminClassroomController::class, 'index'])
+        Route::get('/classroom', [AdminClassroomController::class, 'index'])
             ->name('admin.classrooms.index');
 
-        Route::post('/admin/classroom', [AdminClassroomController::class, 'store'])
+        Route::post('/classroom', [AdminClassroomController::class, 'store'])
             ->name('admin.classrooms.store');
-    // });
+    });

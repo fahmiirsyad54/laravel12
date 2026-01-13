@@ -15,9 +15,9 @@ class AdminMiddleware
         }
 
         // bukan admin
-        if (auth()->user()->role !== 'admin') {
-            abort(403, 'ANDA BUKAN ADMIN');
-        }
+        // if (auth()->user()->role !== 'admin') {
+        //     abort(403, 'ANDA BUKAN ADMIN');
+        // }
 
         return $next($request);
     }

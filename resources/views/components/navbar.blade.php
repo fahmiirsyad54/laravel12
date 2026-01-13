@@ -60,7 +60,7 @@
                         </button>
 
                         <el-menu anchor="bottom end" popover class="w-48 bg-gray-800 rounded-md">
-                            <a href="/profile" class="block px-4 py-2 text-sm text-gray-300">Profile</a>
+                            <a href="/admin/dashboard" class="block px-4 py-2 text-sm text-gray-300">Dashboard</a>
 
                             @if(auth()->user()->role === 'admin')
                                 <a href="{{ route('admin.dashboard') }}"
