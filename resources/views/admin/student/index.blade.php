@@ -71,7 +71,7 @@
                                         <div class="py-1">
                                             <button
                                                 @click="
-                                                    deleteUrl = '{{ route('students.destroy', $student->id) }}';
+                                                    deleteUrl = '{{ route('admin.students.destroy', $student->id) }}';
                                                     openDeleteModal = true;
                                                 "
                                                 class="block w-full text-left py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
