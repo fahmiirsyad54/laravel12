@@ -29,11 +29,23 @@ class AdminStudentController extends Controller
 
         $classrooms = Classroom::all();
 
-        return view('admin.student.index', [
+        $data = [
             'title' => 'Students',
             'students' => $students,
             'classrooms' => $classrooms,
-        ]);
+        ];
+
+        return response()->json([
+            "message"    => "data found",
+            "status"     => "Success",
+            "data"       => $data
+        ], 200);
+
+        // return view('admin.student.index', [
+        //     'title' => 'Students',
+        //     'students' => $students,
+        //     'classrooms' => $classrooms,
+        // ]);
     }
 
 

@@ -32,7 +32,7 @@ Route::resource('student', StudentController::class);
 Route::get('/classroom', [ClassroomController::class, 'index']);
 
 Route::prefix('admin')
-    ->middleware(['auth', 'admin'])
+    ->middleware(['auth','admin'])
     ->group(function () {
 
         // DASHBOARD
